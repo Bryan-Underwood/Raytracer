@@ -9,7 +9,7 @@ A CPU-based ray tracer written in C++, following Peter Shirley's tutorials
 - PPM image output with gradient sky background
 
 ## In progress
-- Surgace normal shading
+- Surface normal shading
 -Antialiasing
 -Diffuse, metal, and dielectric materials
 
