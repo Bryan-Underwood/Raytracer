@@ -7,13 +7,14 @@ A CPU-based ray tracer written in C++, following Peter Shirley's tutorials
 - Ray-sphere intersection
 - Virtual camera and viewport projection
 - PPM image output with gradient sky background
-
+- Surface normal shading
+  
 Current Image:
 
-<img width="1198" height="646" alt="image" src="https://github.com/user-attachments/assets/520c6150-aa5b-42cb-906b-3138995a4a51" />
+<img width="571" height="322" alt="image" src="https://github.com/user-attachments/assets/d6612bf8-1b36-4058-b1ba-1c1db596b669" />
 
 
-- Surface normal shading
+##Working on
 -Antialiasing
 -Diffuse, metal, and dielectric materials
 
