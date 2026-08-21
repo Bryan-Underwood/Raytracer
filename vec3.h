@@ -1,8 +1,7 @@
 #ifndef VEC3_H
 #define VEC3_H
 
-#include <cmath>
-#include <iostream>
+#include "utility.h"
 
 //Vec 3 class
 //Includes color and point3
