@@ -11,7 +11,8 @@ A CPU-based ray tracer written in C++, following Peter Shirley's tutorials
   
 Current Image:
 
-<img width="571" height="322" alt="image" src="https://github.com/user-attachments/assets/d6612bf8-1b36-4058-b1ba-1c1db596b669" />
+<img width="569" height="324" alt="image" src="https://github.com/user-attachments/assets/4ed702f6-4701-48ec-9249-b106ca01dda4" />
+
 
 
 ##Working on
