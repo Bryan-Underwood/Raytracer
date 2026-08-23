@@ -25,7 +25,13 @@ class interval {
         //Checks if point is surrounded by interval
         //Stricter than contains due to < vs <=
         bool surrounds(double x) const {
-            return min < x && x <= max;
+            return min < x && x < max;
+        }
+
+        double clamp(double x) const {
+            if (x < min) return min;
+            if (x > max) return max;
+            return x;
         }
 
         //Constants - empty: nothing, universe: everyting
