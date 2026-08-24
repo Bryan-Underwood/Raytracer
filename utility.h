@@ -33,6 +33,7 @@ inline double random_double(double min, double max) {
     return min + (max-min)*random_double();
 }
 
+
 //Common Headers - must be included after utility to insure they are declared
 #include "color.h"
 #include "ray.h"

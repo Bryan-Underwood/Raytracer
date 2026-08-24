@@ -9,6 +9,7 @@ class camera {
         double aspect_ratio = 1.;
         int image_width = 100;
         int samples_per_pixel = 10;
+        int max_depth = 10;
 
             void render(const hittable& world) {
                 initialize();
@@ -30,7 +31,7 @@ class camera {
 
                             //For each sample add ray color to pixel color
                             ray r = get_ray(i,j);
-                            pixel_color += ray_color(r, world);
+                            pixel_color += ray_color(r, max_depth, world);
                         }
                         //Average out the color and set final pixel color
                         write_color(out, pixel_samples_scale * pixel_color);
@@ -105,13 +106,17 @@ class camera {
             return vec3(random_double() - 0.5, random_double() - 0.5, 0);
         }
         //color pixels based on ray collision and normal orientation
-        color ray_color(const ray& r, const hittable& world) { 
+        color ray_color(const ray& r, int depth, const hittable& world) { 
 
+            if (depth <= 0)
+                return color(0,0,0);
+                
             //Sphere color
             hit_record rec;
 
-            if (world.hit(r, interval(0, infinity), rec)) {
-                return 0.5 * (rec.normal + color(1,1,1));
+            if (world.hit(r, interval(0.001, infinity), rec)) {
+                vec3 direction = random_on_hemisphere(rec.normal);
+                return 0.5 * ray_color(ray(rec.p, direction), depth -1, world);
             }
 
             //Background
