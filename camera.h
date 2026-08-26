@@ -118,7 +118,7 @@ class camera {
                 
                 //Lambertian Reflection
                 vec3 direction = rec.normal + random_unit_vector();
-                return 0.5 * ray_color(ray(rec.p, direction), depth -1, world);
+                return 0.3 * ray_color(ray(rec.p, direction), depth -1, world);
             }
 
             //Background
