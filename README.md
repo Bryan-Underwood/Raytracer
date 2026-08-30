@@ -11,12 +11,12 @@ A CPU-based ray tracer written in C++, following Peter Shirley's tutorials
   
 Current Image:
 
-<img width="572" height="322" alt="image" src="https://github.com/user-attachments/assets/6531eeea-21eb-4a24-b922-2b593e73b5b1" />
+<img width="571" height="320" alt="image" src="https://github.com/user-attachments/assets/b6515633-bc2e-4a91-b3fc-b2b0727b27c8" />
+
 
 
 
 
 ##Working on
--Antialiasing
--Diffuse, metal, and dielectric materials
+-Dielectric Materials, Positional Camera
 
