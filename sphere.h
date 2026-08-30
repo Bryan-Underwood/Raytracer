@@ -7,8 +7,9 @@
 //Sphere shape created using center and radius
 class sphere : public hittable {
     public:
-        //Constructor that defines the spheres radius and center
-        sphere(const point3& center, double radius) : center(center), radius(std::fmax(0,radius)) {}
+        //Constructor that defines the spheres radius, center, and material
+        sphere(const point3& center, double radius, shared_ptr<material> mat)
+         : center(center), radius(std::fmax(0,radius)), mat(mat) {}
 
         //Hit function for sphere shape
         bool hit(const ray& r, interval ray_t, hit_record& rec) const override {
@@ -37,12 +38,13 @@ class sphere : public hittable {
                     return false;
             }
 
-            //record the data of the hit - distance, hit point, normal
+            //record the data of the hit - distance, hit point, normal, material
             rec.t = root;
             rec.p = r.at(rec.t);
             //Normalize surface normal
             vec3 outward_normal = (rec.p - center) / radius;
             rec.set_face_normal(r, outward_normal);
+            rec.mat = mat;
 
             return true;
         }
@@ -50,6 +52,7 @@ class sphere : public hittable {
     private:
         point3 center;
         double radius;
+        shared_ptr<material> mat;
 
 };
 

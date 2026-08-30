@@ -1,6 +1,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 #include "hittable.h"
+#include "material.h" 
+
 #include <fstream>
 
 class camera {
@@ -105,20 +107,25 @@ class camera {
         vec3 sample_square() const {
             return vec3(random_double() - 0.5, random_double() - 0.5, 0);
         }
-        //color pixels based on ray collision and normal orientation
+        //Recursively trace a ray through the scene, accumulating color via material scattering
         color ray_color(const ray& r, int depth, const hittable& world) { 
 
+            //Stop recursion after too many bounces
             if (depth <= 0)
                 return color(0,0,0);
                 
-            //Sphere color
+            //Store info on ray intersection
             hit_record rec;
 
             if (world.hit(r, interval(0.001, infinity), rec)) {
                 
-                //Lambertian Reflection
-                vec3 direction = rec.normal + random_unit_vector();
-                return 0.3 * ray_color(ray(rec.p, direction), depth -1, world);
+                ray scattered;
+                color attenuation;
+                // Ask the material how (or whether) this ray scatters
+                if (rec.mat -> scatter(r, rec, attenuation, scattered))
+                    //collect color data for final image
+                    return attenuation * ray_color(scattered, depth-1, world);
+                return color(0,0,0);
             }
 
             //Background
